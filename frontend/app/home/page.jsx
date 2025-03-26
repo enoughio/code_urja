@@ -1,18 +1,13 @@
-import Hero from "@/componets/Hero"
-import WhyChoseUsero from "@/componets/WhyChoseUs.jsx"
-// import FAQ from "@/componets/FAQ.jsx"
-
+import React from 'react'
 
 const page = () => {
   return (
     <div>
-        <Hero />
-        <WhyChoseUsero />
-        {/* <FAQ /> */}
 
-
-
-    </div>
+      
+      
+      
+      </div>
   )
 }
 
