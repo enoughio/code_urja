@@ -1,6 +1,7 @@
 import express from "express";
 
 import { updateHomePage } from "../controllers/homeController.js";
+import { deleteHomePage } from "../controllers/homeController.js";
 
 const router = express.Router();
 
@@ -10,5 +11,6 @@ router.get("/faq", (req, res) => res.json({ message: "FAQ Section Data" }));
 router.get("/footer", (req, res) => res.json({ message: "Footer Section Data" }));
 
 router.put("/update", updateHomePage);
+router.delete("/delete/:id", deleteHomePage);
 
 export default router;
