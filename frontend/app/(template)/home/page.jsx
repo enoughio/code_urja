@@ -12,7 +12,7 @@ import Navbar from "@/componets/Navbar"
 const page = () => {
   return (
     <div>
-         <Navbar/>
+        <Navbar/>
         <Hero />
         <WhyChoseUs/>  
         <Faq/>
@@ -21,10 +21,6 @@ const page = () => {
         <Latest/>
         <Contact/>
         <Footer/>
-    
-
-
-
     </div>
   )
 }
