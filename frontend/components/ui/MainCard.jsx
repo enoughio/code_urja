@@ -1,25 +1,75 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-const MainCard = () => {
+const WebsitesList = () => {
+  const router = useRouter();
+
+  const [websites, setWebsites] = useState([
+    {
+      id: '1',
+      name: 'testing',
+      description: 'teter',
+      domain: 'tterst.tsafi.xyz',
+      createdAt: '3/26/2025'
+    }
+  ]);
+
+  const createWebsite = async () => {
+    try {
+      const response = await fetch('/api/website', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Add any required body data
+        // body: JSON.stringify(data)
+      });
+
+
+
+      if (response.ok) {
+        const newWebsite = await response.json();
+        setWebsites([...websites, newWebsite]);
+      } else {
+        console.error('Failed to create website');
+      }
+    } catch (error) {
+      console.error('Error creating website:', error);
+    }
+  };
+
+  const handleWebsiteClick = (websiteId) => {
+    router.push(`/user/website/${websiteId}/get`);
+  };
+
   return (
-    <div className="flex justify-center items-center h-screen w-screen bg-gradient-to-b from-blue-100 to-white p-8 relative">
-      <button 
-        className="absolute top-6 right-6 bg-gradient-to-r from-blue-400 to-teal-300 text-white px-5 py-2 rounded-lg shadow-lg hover:from-blue-500 hover:to-teal-400 transition-all duration-300"
-      >
-        Action
-      </button>
-      <main className="p-10 w-full h-full max-w-6xl bg-white shadow-xl rounded-3xl border border-gray-300 flex flex-col justify-center items-center">
-        <h1 className="text-4xl font-extrabold text-blue-700 mb-6">Dashboard</h1>
-        <div 
-          className="bg-gradient-to-br from-white to-gray-100 shadow-2xl rounded-2xl p-8 border border-gray-300 hover:shadow-4xl transition-shadow duration-300 w-1/2"
+    <div className="bg-gray-800 min-h-screen p-6 w-full">
+      <div className="flex justify-end mb-6">
+        <button 
+          onClick={createWebsite}
+          className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors"
         >
-          <h2 className="text-2xl font-bold text-blue-600 mb-3">Card Title</h2>
-          <p className="text-gray-600">This is a well-designed card component with a clean and bright look.</p>
-        </div>
-      </main>
+          Create
+        </button>
+      </div>
+      <div className="space-y-4">
+        {websites.map((website) => (
+          <div 
+            key={website.id}
+            onClick={() => handleWebsiteClick(website.id)}
+            className="bg-[#1A1A1A] rounded-lg p-4 cursor-pointer hover:bg-[#2A2A2A] transition-colors"
+          >
+            <h2 className="text-white font-semibold text-lg">{website.name}</h2>
+            <p className="text-gray-400 text-sm">{website.description}</p>
+            <div className="flex justify-between items-center mt-2">
+              <span className="text-gray-500 text-sm">{website.domain}</span>
+              <span className="text-gray-500 text-sm">{website.createdAt}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default MainCard;
+export default WebsitesList;
