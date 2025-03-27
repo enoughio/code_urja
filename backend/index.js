@@ -8,7 +8,7 @@ import tenantMiddleware from "./middleware/tenantMiddleware.js";
 // import authRoutes from "./routes/authRoutes.js";
 // import homeRoutes from "./routes/homeRoutes.js";
 // import aboutRoutes from "./routes/aboutRoutes.js";
-// import contactRoutes from "./routes/contactRoutes.js";
+import contactRoutes from "./routes/contactRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import ecommRoutes from "./routes/ecommRoutes.js";
 // import productRoutes from "./routes/productRoutes.js";  
@@ -41,6 +41,8 @@ app.use("/api/blog", blogRoutes);
 app.use("/api/ecom", ecommRoutes);
 
 app.use("/api/about", aboutRoutes);
+
+app.use("/api/contact", contactRoutes);
 
 
 // Connect Database & Start Server

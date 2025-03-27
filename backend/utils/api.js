@@ -109,7 +109,7 @@ export const getWhyChooseUsLayout = async ({ why1, why2, why3, style }) => {
     - Reason 3: ${why3}`;
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
 
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
