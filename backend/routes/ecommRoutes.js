@@ -1,7 +1,16 @@
 import express from "express";
-const router = express.Router();
 
-router.get("/", (req, res) => res.json({ message: "E-commerce Product List" }));
-router.get("/:id", (req, res) => res.json({ message: "Single Product Data" }));
+import { buyProduct, createProduct, deleteProduct, getShopcard, getShopHero, updateProduct, getShop } from "../controllers/ecommController.js";
+
+const router = express.Router();
+// router.get("/", getShop);
+router.post("/create/shop/hero", getShopHero);
+router.post("/create/shop/card", getShopcard);
+
+router.post("/add", createProduct);
+router.post('/buy/:id', buyProduct);
+
+router.put("/update/:id", updateProduct); 
+router.delete("/delete/:id", deleteProduct);
 
 export default router;

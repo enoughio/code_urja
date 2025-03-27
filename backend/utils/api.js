@@ -142,3 +142,100 @@ export const getFooterLayout = async ({ links, title, style }) => {
     
     return response.text;
 };
+
+
+
+
+export const getShopHeroLayout = async ({ heading, subhead, image, cta, style }) => {
+
+    let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+    
+    prompt += ` The component should include:
+    - Headline: ${heading}
+    - Subhead: ${subhead}`;
+    
+    if (image) {
+        prompt += `
+    - Image: ${image}`;
+    }
+    
+    if (cta) {
+        prompt += `
+    - Button: ${cta.text}, CTA Link: ${cta.route}`;
+    }
+    
+    prompt += `
+    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: prompt,
+    });
+    
+    return response.text;
+}
+
+
+
+
+export const getProductCardLayout = async ({ name, description, price, category }) => {
+
+    let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+
+    prompt += ` The component should include:
+    - Name: ${name}
+    - Description: ${description}
+    - Price: ${price}
+    - Category: ${category}`;
+
+    prompt += `
+    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: prompt,
+    });
+
+    return response.text;
+}
+
+
+
+export const getBlogHeroLayout = async ({ heading, subhead, style }) => {
+    let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+    
+    prompt += ` The component should include:
+    - Headline: ${heading}
+    - Subhead: ${subhead}`;
+    
+    prompt += `
+    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: prompt,
+    });
+    
+    return response.text;
+}
+
+
+
+export const getBlogCardLayout = async ({ style }) => {
+    let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+    
+    prompt += ` The component should include:
+    - Blog Title
+    - Blog Content
+    - Author`;
+    
+    prompt += `
+    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: prompt,
+    });
+    
+    return response.text;
+}
