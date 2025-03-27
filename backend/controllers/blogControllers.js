@@ -70,10 +70,10 @@ export const getBlogHero = async (req, res) => {
         const { heading, subHead, style } = req.body;
         const layout = await getBlogHeroLayout({ heading, subHead, style });
 
-        const newLayout = new Layout({ type: "hero", heading, subHead, style });
-        await newLayout.save();
+        // const newLayout = new Layout({ type: "hero", heading, subHead, style });
+        // await newLayout.save();
 
-        res.json({ layout, stored: newLayout});
+        res.json({ layout });
     } catch (error) {
         console.error("Error getting blog hero layout:", error);
         res.status(500).json({ error: "Server error" });
@@ -87,10 +87,10 @@ export const getBlogCard = async (req, res) => {
         const { style } = req.body;
         const layout = await getBlogCardLayout({ style });
 
-        const newLayout = new Layout({ type: "card", style });
-        await newLayout.save();
+        // const newLayout = new Layout({ type: "card", style });
+        // await newLayout.save();
 
-        res.json({ layout, stored: newLayout });
+        res.json({ layout });
     } catch (error) {
         console.error("Error getting blog card layout:", error);
         res.status(500).json({ error: "Server error" });
