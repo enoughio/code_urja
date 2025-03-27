@@ -31,9 +31,11 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes)
 
-app.use("/api/website", websiteRoutes);
+
+app.use("api/website", websiteRoutes);
 // app.use("api/blog", blogRoutes);
-app.use("/api/ecom", ecommRoutes)
+app.use("api/ecom", ecommRoutes)
+
 
 // Connect Database & Start Server
 connectDB();

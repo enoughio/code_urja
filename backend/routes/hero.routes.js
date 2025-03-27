@@ -5,7 +5,7 @@ import { getHeroSection, deleteHomePage, getFooterSection, getWhyChooseUsSection
 
 const router = express.Router();
 
-router.post("/hero", getHeroSection);
+
 
 // router.get("/footer", (req, res) => res.json({ message: "Footer Section Data" }));
 
