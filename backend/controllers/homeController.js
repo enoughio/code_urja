@@ -1,5 +1,5 @@
 import { getHeroLayout, getFAQLayout,  getWhyChooseUsLayout, getFooterLayout } from "../utils/api.js";
-
+import Home from "../models/Home.js";
 
 export const getHeroSection = async (req, res) => {
     try {
@@ -99,7 +99,7 @@ export const getFooterSection = async (req, res) => {
 
 
 
-import Home from "../models/Home.js";
+// import Home from "../models/Home.js";
 
 export const updateHomePage = async (req, res) => {
     try {

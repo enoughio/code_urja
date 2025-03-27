@@ -14,7 +14,7 @@
 
 import Contact from "../models/Contact.js";
 
-// ✅ Create a New Contact (Already Exists)
+// Create a New Contact (Already Exists)
 export const sendEnquiry = async (req, res) => {
     try {
         const { name, email, message } = req.body;
@@ -27,7 +27,7 @@ export const sendEnquiry = async (req, res) => {
     }
 };
 
-// ✅ Update an Existing Contact
+// Update an Existing Contact
 export const updateContact = async (req, res) => {
     try {
         const { id } = req.params;
@@ -50,7 +50,7 @@ export const updateContact = async (req, res) => {
     }
 };
 
-// ✅ Delete a Contact
+// Delete a Contact
 export const deleteContact = async (req, res) => {
     try {
         const { id } = req.params;
