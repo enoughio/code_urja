@@ -32,11 +32,17 @@ app.use(express.json());
 // app.use("/api/auth", authRoutes)
 
 
+<<<<<<< HEAD
 app.use("/api/website", websiteRoutes);
 
 app.use("/api/blog", blogRoutes);
 
 app.use("/api/ecom", ecommRoutes)
+=======
+app.use("api/website", websiteRoutes);
+app.use("api/blog", blogRoutes);
+app.use("api/ecom", ecommRoutes)
+>>>>>>> parent of 31aae3b (added blog and ecom generation code)
 
 
 // Connect Database & Start Server
