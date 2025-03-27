@@ -14,6 +14,8 @@ import ecommRoutes from "./routes/ecommRoutes.js";
 // import productRoutes from "./routes/productRoutes.js";  
 import websiteRoutes from "./routes/website.routes.js";
 
+import aboutRoutes from "./routes/about.routes.js";
+
 
 // import { sendEnquiry } from "./controllers/contactController.js";
 // import { get } from "mongoose";
@@ -36,7 +38,9 @@ app.use("/api/website", websiteRoutes);
 
 app.use("/api/blog", blogRoutes);
 
-app.use("/api/ecom", ecommRoutes)
+app.use("/api/ecom", ecommRoutes);
+
+app.use("/api/about", aboutRoutes);
 
 
 // Connect Database & Start Server

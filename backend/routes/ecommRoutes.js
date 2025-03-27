@@ -5,7 +5,7 @@ import { buyProduct, createProduct, deleteProduct, getShopcard, getShopHero, upd
 const router = express.Router();
 // router.get("/", getShop);
 router.post("/create/shop/hero", getShopHero);
-router.post("/create/shop/card", getShopcard);
+router.post("/create/shop/card", getShopcard);      /* */
 
 router.post("/add", createProduct);
 router.post('/buy/:id', buyProduct);
