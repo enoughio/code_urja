@@ -16,6 +16,9 @@ import websiteRoutes from "./routes/website.routes.js";
 
 
 import { sendEnquiry } from "./controllers/contactController.js";
+import { get } from "mongoose";
+import { getHeroLayout } from "./utils/api.js";
+import { getHeroSection } from "./controllers/homeController.js";
 
 dotenv.config();
 const app = express();
@@ -23,10 +26,11 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(tenantMiddleware); // Multi-Tenant Handling
+// app.use(tenantMiddleware); // Multi-Tenant Handling
 
 // Routes
 app.use("/api/auth", authRoutes)
+
 
 app.use("api/website", websiteRoutes);
 // app.use("api/blog", blogRoutes);

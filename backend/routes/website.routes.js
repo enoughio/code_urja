@@ -1,13 +1,24 @@
 import express from "express";
-import heroRoutes, {UpdateHome, getHomePage} from "./hero.routes.js";
+
+
+import heroRoutes from "./hero.routes.js";
+import { getFAQSection, getFooterSection, getHeroSection, getHomePage } from "../controllers/homeController.js";
+
 // import aboutRoutes from "./about.routes.js";
 // import contactRoutes from "./contact.routes.js";
 
 
 const router = express.Router();
 
-router.apply.get("/home", getHomePage)
-router.post("/create/home", heroRoutes)
+router.get("user/home", getHomePage)
+// router.post("/create/home", heroRoutes)
+router.post("/create/home/hero", getHeroSection)
+router.post("/create/home/faq", getFAQSection)
+router.post("/create/home/fotter", getFooterSection)
+
+
+
+
 // router.get("/update/home", UpdateHome)
 // router.get("/:tenetid/create/about", aboutRoutes)
 // router.get("/:tenetid/create/contact", contactRoutes)
