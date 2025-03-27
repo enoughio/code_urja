@@ -6,12 +6,14 @@ import tenantMiddleware from "./middleware/tenantMiddleware.js";
 
 // Import Routes
 import authRoutes from "./routes/authRoutes.js";
-import homeRoutes from "./routes/homeRoutes.js";
-import aboutRoutes from "./routes/aboutRoutes.js";
-import contactRoutes from "./routes/contactRoutes.js";
-import blogRoutes from "./routes/blogRoutes.js";
+// import homeRoutes from "./routes/homeRoutes.js";
+// import aboutRoutes from "./routes/aboutRoutes.js";
+// import contactRoutes from "./routes/contactRoutes.js";
+// import blogRoutes from "./routes/blogRoutes.js";
 import ecommRoutes from "./routes/ecommRoutes.js";
-import productRoutes from "./routes/productRoutes.js";  
+// import productRoutes from "./routes/productRoutes.js";  
+import websiteRoutes from "./routes/website.routes.js";
+
 
 import { sendEnquiry } from "./controllers/contactController.js";
 
@@ -24,13 +26,12 @@ app.use(express.json());
 app.use(tenantMiddleware); // Multi-Tenant Handling
 
 // Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/home", homeRoutes);
-app.use("/api/about", aboutRoutes);
-app.use("/api/contact", contactRoutes);
-app.use("/api/blog", blogRoutes);
-app.use("/api/ecomm", ecommRoutes);
-app.use("/api/product", productRoutes);
+app.use("/api/auth", authRoutes)
+
+app.use("api/website", websiteRoutes);
+// app.use("api/blog", blogRoutes);
+app.use("api/ecom", ecommRoutes)
+
 
 // Connect Database & Start Server
 connectDB();

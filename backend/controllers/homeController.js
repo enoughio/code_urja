@@ -1,32 +1,80 @@
-// import Home from "../models/Home.js";
+import { getHeroLayout, getFAQLayout,  getWhyChooseUsLayout, getFooterLayout } from "../utils/api.js";
 
-// export const updateHomePage = async (req, res) => {
-//     try {
-//         const { heroText, whyChooseUs, faqs, footer } = req.body;
-//         // const homeData = await Home.findOneAndUpdate({}, { heroText, whyChooseUs, faqs, footer }, { upsert: true, new: true });
-//         // res.json({ message: "Home page updated!", data: homeData });
 
-//         if (!hero || !whyChooseUs || !faqs || !footer) {
-//             return res.status(400).json({ error: "Missing required fields" });
-//           }
-      
-//           const home = await Home.findOne();
-//           if (!home) {
-//             return res.status(404).json({ error: "Home section not found" });
-//           }
-      
-//           home.heroText = heroText;
-//           home.whyChooseUs = whyChooseUs;
-//           home.faqs = faqs;
-//           home.footer = footer;
-      
-//           await home.save();
-      
-//           res.status(200).json({ message: "Home page updated successfully", home });
-//     } catch (error) {
-//         res.status(500).json({ error: "Server error" });
-//     }
-// };
+export const getHeroSection = async (req, res) => {
+    try {
+        const { heading, subHead, image, cta, style } = req.body;
+
+        if (!heading || !subHead) {
+            return res.status(400).json({ error: "Heading and subhead are required fields." });
+        }
+
+        const heroComponent = await getHeroLayout({ heading, subhead: subHead, image, cta, style });
+        
+        res.status(200).json({ message: "Hero section generated successfully", component: heroComponent });
+    } catch (error) {
+        console.error("Error generating hero section:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+};
+
+
+export const getWhyChooseUsSection = async (req, res) => {
+    try {
+        const { why1, why2, why3,style } = req.body;
+
+        if (!style) {
+            return res.status(400).json({ error: "Style is a required field." });
+        }
+
+        const whyChooseUsComponent = await getWhyChooseUsLayout({ why1, why2, why3, style });
+        
+        res.status(200).json({ message: "Why Choose Us section generated successfully", component: whyChooseUsComponent });
+    } catch (error) {
+        console.error("Error generating Why Choose Us section:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
+
+
+// faqs are an array of objects with question and answer fields
+export const getFAQSection = async (req, res) => {
+    try {
+        const { faqs } = req.body;
+
+        if (!faqs || !faqs.length) {
+            return res.status(400).json({ error: "FAQs are required." });
+        }
+
+        const faqComponent = await getFAQLayout(faqs);
+        
+        res.status(200).json({ message: "FAQ section generated successfully", component: faqComponent });
+    } catch (error) {
+        console.error("Error generating FAQ section:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
+
+
+export const getFooterSection = async (req, res) => {
+
+    if(!req.body.links || !req.body.title) {
+        return res.status(400).json({ error: "Links and title are required fields." });
+    }
+
+    try {
+        const { links, title}  = req.body;
+        const footerComponent = await getFooterLayout({ links, title });
+
+        res.status(200).json({ message: "Footer section generated successfully", component: footerComponent });
+    
+    } catch (error) {
+        console.error("Error generating footer section:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+
+}
+
 
 
 import Home from "../models/Home.js";
