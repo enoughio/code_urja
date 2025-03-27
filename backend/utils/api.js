@@ -32,8 +32,7 @@ export const getHeroLayout = async ({ heading, subhead, image, cta, style }) => 
     }
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -86,8 +85,7 @@ export const getFAQLayout = async (faqs, style) => {
     });
 
     prompt += `
-        Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -110,7 +108,6 @@ export const getWhyChooseUsLayout = async ({ why1, why2, why3, style }) => {
     
     prompt += `
     Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
-
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -133,8 +130,7 @@ export const getFooterLayout = async ({ links, title, style }) => {
     });
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -165,8 +161,7 @@ export const getShopHeroLayout = async ({ heading, subhead, image, cta, style })
     }
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -189,8 +184,7 @@ export const getProductCardLayout = async ({ name, description, price, category 
     - Category: ${category}`;
 
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -209,8 +203,7 @@ export const getBlogHeroLayout = async ({ heading, subhead, style }) => {
     - Subhead: ${subhead}`;
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
@@ -230,8 +223,7 @@ export const getBlogCardLayout = async ({ style }) => {
     - Author`;
     
     prompt += `
-    Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-
+    Ensure the component is written in JavaScript and does not require any additional npm packages, donot give anything else than code and i just want the parent element. Donot give me a react component as I am going to directly insert that parent element into some another element.`;
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
         contents: prompt,
