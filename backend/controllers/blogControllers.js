@@ -36,14 +36,25 @@ export const updateBlog = async (req, res) => {
 };
 
 // ✅ Delete Blog
+import DeletedBlog from "../models/DeletedBlog.js";
 export const deleteBlog = async (req, res) => {
     try {
         const { id } = req.params;
 
-        const deletedBlog = await Blog.findByIdAndDelete(id);
-        if (!deletedBlog) {
+        const blog = await Blog.findByIdAndDelete(id);
+        if (!blog) {
             return res.status(404).json({ error: "Blog not found" });
         }
+
+        const deletedBlog = new DeletedBlog({
+            blogId: blog._id,
+            title: blog.title,
+            content: blog.content,
+            author: blog.author
+        });
+
+        await deletedBlog.save();
+        await Blog.findByIdAndDelete(id);
 
         res.status(200).json({ message: "Blog deleted successfully!" });
     } catch (error) {
@@ -59,7 +70,8 @@ export const getBlogHero = async (req, res) => {
         const { heading, subHead, style } = req.body;
         const layout = await getBlogHeroLayout({ heading, subHead, style });
 
-
+        // const newLayout = new Layout({ type: "hero", heading, subHead, style });
+        // await newLayout.save();
 
         res.json({ layout });
     } catch (error) {
@@ -74,6 +86,9 @@ export const getBlogCard = async (req, res) => {
     try {
         const { style } = req.body;
         const layout = await getBlogCardLayout({ style });
+
+        // const newLayout = new Layout({ type: "card", style });
+        // await newLayout.save();
 
         res.json({ layout });
     } catch (error) {
