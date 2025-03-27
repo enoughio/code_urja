@@ -132,3 +132,10 @@ export const deleteHomePage = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 };
+
+
+
+
+export const getHomePage = (req, res) => {
+    res.json({ message: "Home page data" });
+}
