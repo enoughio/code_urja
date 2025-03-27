@@ -33,7 +33,9 @@ app.use(express.json());
 
 
 app.use("/api/website", websiteRoutes);
+
 app.use("/api/blog", blogRoutes);
+
 app.use("/api/ecom", ecommRoutes)
 
 
