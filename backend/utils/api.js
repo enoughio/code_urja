@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyDLnCd1su3fcE5q_z1sFPPasLEATPObC2E" });
+const ai = new GoogleGenAI({ apiKey: "AIzaSyA5cG6jL9x_CDvK_S9OyCuE8VwbTCUyH1Y" });
 
 async function main() {
   const response = await ai.models.generateContent({
@@ -46,28 +46,56 @@ export const getHeroLayout = async ({ heading, subhead, image, cta, style }) => 
 
 
 // faqs are an array of objects with question and answer fields
-export const getFAQLayout = async (faqs) => {
+// export const getFAQLayout = async (faqs) => {
     
-        let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+//         let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
         
-        prompt += ` The component should include:`;
+//         prompt += ` The component should include:`;
         
-        faqs.forEach((faq, index) => {
-            prompt += `
+//         faqs.forEach((faq, index) => {
+//             prompt += `
+//         - Question ${index + 1}: ${faq.question}
+//         - Answer ${index + 1}: ${faq.answer}`;
+//         });
+        
+//         prompt += `
+//         Ensure the component is written in JavaScript and does not require any additional npm packages.`;
+    
+//         const response = await ai.models.generateContent({
+//             model: "gemini-2.0-flash",
+//             contents: prompt,
+//         });
+        
+//         return response.text;
+// }
+
+export const getFAQLayout = async (faqs, style) => {
+    console.log("FAQs received:", faqs);
+    console.log("Style received:", style);
+
+    if (!style) throw new Error("Style parameter is missing in getFAQLayout");
+
+    let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
+
+    prompt += ` The component should include:`;
+
+    faqs.forEach((faq, index) => {
+        prompt += `
         - Question ${index + 1}: ${faq.question}
         - Answer ${index + 1}: ${faq.answer}`;
-        });
-        
-        prompt += `
+    });
+
+    prompt += `
         Ensure the component is written in JavaScript and does not require any additional npm packages.`;
-    
-        const response = await ai.models.generateContent({
-            model: "gemini-2.0-flash",
-            contents: prompt,
-        });
-        
-        return response.text;
-}
+
+    const response = await ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: prompt,
+    });
+
+    return response.text;
+};
+
 
 
 
@@ -93,7 +121,7 @@ export const getWhyChooseUsLayout = async ({ why1, why2, why3, style }) => {
 
 
 
-export const getFooterLayout = async ({ links, title }) => {
+export const getFooterLayout = async ({ links, title, style }) => {
     let prompt = `I want a Next.js 14 component with "use client" at the top. The component should follow a consistent design style for reuse across sections like Hero, Why Choose Us, and Testimonials. The design should follow these style parameters: ${JSON.stringify(style)}.`;
     
     prompt += ` The component should include:
