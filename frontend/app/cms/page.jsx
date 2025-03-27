@@ -28,7 +28,7 @@ const Sidebar = () => {
       <div 
         className={`
           ${isOpen ? 'w-64' : 'w-16'} 
-          bg-gray-800 text-white 
+          bg-gray-950 text-white 
           transition-all duration-300 
           ease-in-out 
           p-4 
