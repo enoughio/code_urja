@@ -1,4 +1,5 @@
 import Blog from "../models/Blog.js";
+import { getBlogCardLayout, getBlogHeroLayout } from "../utils/api.js";
 
 export const createBlog = async (req, res) => {
     try {
@@ -10,6 +11,7 @@ export const createBlog = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 };
+
 
 export const updateBlog = async (req, res) => {
     try {
@@ -49,3 +51,34 @@ export const deleteBlog = async (req, res) => {
         res.status(500).json({ error: "Server error" });
     }
 };
+
+
+
+export const getBlogHero = async (req, res) => {
+    try {
+        const { heading, subHead, style } = req.body;
+        const layout = await getBlogHeroLayout({ heading, subHead, style });
+
+
+
+        res.json({ layout });
+    } catch (error) {
+        console.error("Error getting blog hero layout:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
+
+
+
+export const getBlogCard = async (req, res) => {
+    try {
+        const { style } = req.body;
+        const layout = await getBlogCardLayout({ style });
+
+        res.json({ layout });
+    } catch (error) {
+        console.error("Error getting blog card layout:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+}
+

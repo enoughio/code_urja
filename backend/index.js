@@ -5,20 +5,20 @@ import connectDB from "./config/db.js";
 import tenantMiddleware from "./middleware/tenantMiddleware.js";
 
 // Import Routes
-import authRoutes from "./routes/authRoutes.js";
+// import authRoutes from "./routes/authRoutes.js";
 // import homeRoutes from "./routes/homeRoutes.js";
 // import aboutRoutes from "./routes/aboutRoutes.js";
 // import contactRoutes from "./routes/contactRoutes.js";
-// import blogRoutes from "./routes/blogRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 import ecommRoutes from "./routes/ecommRoutes.js";
 // import productRoutes from "./routes/productRoutes.js";  
 import websiteRoutes from "./routes/website.routes.js";
 
 
-import { sendEnquiry } from "./controllers/contactController.js";
-import { get } from "mongoose";
-import { getHeroLayout } from "./utils/api.js";
-import { getHeroSection } from "./controllers/homeController.js";
+// import { sendEnquiry } from "./controllers/contactController.js";
+// import { get } from "mongoose";
+// import { getHeroLayout } from "./utils/api.js";
+// import { getHeroSection } from "./controllers/homeController.js";
 
 dotenv.config();
 const app = express();
@@ -29,11 +29,11 @@ app.use(express.json());
 // app.use(tenantMiddleware); // Multi-Tenant Handling
 
 // Routes
-app.use("/api/auth", authRoutes)
+// app.use("/api/auth", authRoutes)
 
 
 app.use("api/website", websiteRoutes);
-// app.use("api/blog", blogRoutes);
+app.use("api/blog", blogRoutes);
 app.use("api/ecom", ecommRoutes)
 
 
