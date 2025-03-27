@@ -1,5 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Plus } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,8 +25,42 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+
+        <nav
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="bg-gradient-to-r from-black to-blue-800 shadow-lg fixed w-full z-50"
+        >
+          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            {/* Logo */}
+            <Link href="/" className="text-white text-2xl font-bold flex items-center space-x-2">
+              <Plus size={40} className="text-white" />
+              <span>Event<span className="text-[#75e6da]">Pro</span></span>
+            </Link>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-6">
+              <Link href="/" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">Home</Link>
+              <Link href="/cms" className="text-white text-2xl text-bold hover:text-[#060c0c]  transition">CMS</Link>
+              {/* <Link href="/ecombox" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">E-com</Link> */}
+              <Link href="/about" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">About</Link>
+              <Link href="/signuo" className="text-white text-2xl text-bold hover:text-[#060c0c]  transition">Signup</Link>
+
+            </div>
+          </div>
+        </nav>
+
+
         {children}
       </body>
     </html>
   );
 }
+
+
+
+
+
+

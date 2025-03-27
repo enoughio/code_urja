@@ -14,53 +14,6 @@ const Navbar = () => {
 
     return (
         <>
-            <motion.nav
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="bg-gradient-to-r from-black to-blue-800 shadow-lg fixed w-full z-50"
-            >
-                <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                    {/* Logo */}
-                    <Link href="/" className="text-white text-2xl font-bold flex items-center space-x-2">
-                        <Plus size={40} className="text-white" />
-                        <span>Event<span className="text-[#75e6da]">Pro</span></span>
-                    </Link>
-
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-6">
-                        <Link href="/" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">Home</Link>
-                        <Link href="ecombox" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">E-com</Link>
-                        <Link href="/about" className="text-white text-2xl text-bold hover:text-[#060c0c] transition">About</Link>
-                        <Link href="/auth/login" className="text-white text-2xl text-bold hover:text-[#060c0c]  transition">Login</Link>
-                        <Link href="/auth/signup" className="text-white text-2xl text-bold hover:text-[#060c0c]  transition">Signup</Link>
-
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-white"
-                    >
-                        {isOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
-                </div>
-
-                {/* Mobile Menu */}
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden bg-gradient-to-r from-black to-blue-800 p-4 space-y-3"
-                    >
-                        <Link href="/" className="block text-white hover:text-[#75e6da]">Home</Link>
-                        <Link href="/events" className="block text-white hover:text-[#75e6da]">Events</Link>
-                        <Link href="/about" className="block text-white hover:text-[#75e6da]">About</Link>
-                        <Link href="/contact" className="block text-white hover:text-[#75e6da]">Contact</Link>
-                    </motion.div>
-                )}
-            </motion.nav>
 
            
 
