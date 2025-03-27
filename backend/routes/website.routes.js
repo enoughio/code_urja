@@ -2,7 +2,7 @@ import express from "express";
 
 
 
-import heroRoutes from "./hero.routes.js";
+// import heroRoutes from "./hero.routes.js";
 import { getFAQSection, getFooterSection, getWhyChooseUsSection, getHeroSection, getHomePage } from "../controllers/homeController.js";
 
 
